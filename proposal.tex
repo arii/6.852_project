@@ -16,21 +16,21 @@
 6.852 Distributed Algorithms Project Proposal\\ }
 Ariel Anders and Noel Hollingsworth 
 \end{center}
-We propose to do a reading project of distributed reinforcement learning. Our project motivation comes from the problem of determining the behavior of modular robotics, such as in \cite{modrobots}. These modular robots can take the form of many different configurations to accomplish a goal, such as moving to a specific location.   Based on the initial configuration, a unique policy may be required to result in a goal configuration. Hard coding such a policy  can be impractical, as there are many different possible configurations. Reinforcement learning is a way to learn the appopriate behavior through experience, rather than through human knowledge. We believe that this particular project is not in an advanced enough state to consider doing an experimental project involving reinforcement learning given the scope of the final project, and that a reading project could serve as a good introduction for later experimental work with these robots.\par
+We propose to do a reading project on intersection collision avoidance by decentralized autonomous intersection management.  \\
 
-Reinforcement learning is the study of how agents in an environment should take actions to maximize their reward \cite{reinforcement}. For the modular robotics domain a simple problem would be how much force the individual robot should apply to its motor, given its place in a configuration and a desired final location. The entire configuration would be assigned a large reward when it arrived at its desired location quickly, and a small reward when it took a long time to arrive at the desired location. Reinforcement learning in a distributed setting is a more challenging problem than traditional reinforcement learning, as agents role in the overall system may change, and it's often unclear how much each agent contributes or detracts from the overall effectiveness of the system.\par
+Traffic congestion is one of the leading causes of lost productivity and decreased standard of living in urban settings. Recent advances in artificial intelligence suggest vehicle navigation by autonomous agents will be possible in the near future.\cite{dresner}  We plan to investigate approaches for alleviating traffic congestion, specifically at intersections.  There have been advances in developing centralized controls to pilot cars at intersections; however, in light of the course we plan to focus our literary review on decentralized intersection management methods.
 
-\cite{distributedreinforcement} and \cite{scalablelocomotion} will serve as the starting point for our survey of distributed reinforcement learning. We intend to focus on papers that deal with problems at the intersection of distributed algorithms and reinforcement learning, such as what to communicate to other robots in a configuration when the configuration changes. We hope that the papers we describe can be applied to modular robotics, ideally to similar problems as \cite{modrobots} is dealing with, so that our work can act as a background for future empirical work. 
+In particular, we are interested in a line of research by \cite{naumann} which creates a token-ring-based communication protocol among autonomous vehicles in a specified zone around the intersection.  Collision avoidance is ensured by means of semaphor-based algorithms, which allow only one vehicle to remain in the intersection segment at a time.  In our literary review, we would like to show the connection between decentralized intersection management methods and the mutual exclusion algorithms we reviewed in class.  Furthermore, we would like to investigate allowing priority in the mutual exclusion algorithms.  For example, if an ambulance approaches the intersection, it should get top priority to use the intersection.  Another area we are interested in investigation is the discussion of modeling the problem, which may take into account the individual car's current position, velocity, and acceleration while approaching the intersection.  One aim of our project is to translate this problem into the current distributed algorithms literature, for example, we would like to discuss the liveness properties\cite{tszchiu} or progress conditions...blbalbalbal
+
+
 \begin{thebibliography}{9}
-\bibitem{modrobots}
-http://web.mit.edu/newsoffice/2013/simple-scheme-for-self-assembling-robots-1004.html
-\bibitem{reinforcement}
-L. P. Kaelbling, L. M. Littman, and A. W. Moore, “Reinforcement
-learning: A survey,” J. Artif. Intell. Res., vol. 4, pp. 237–285, 1996.
-\bibitem{distributedreinforcement}
-Paulina Varshavskaya, Leslie Pack Kaelbling, and Daniela Rus, "Efficient Distributed Reinforcement Learning Through Agreement," 9th International Symposium on Distributed Autonomous Robotic Systems (DARS), Tsukuba Japan, November 2008.
-\bibitem{scalablelocomotion}
-Robert Fitch and  Zack Butler, ``Scalable locomotion for large self-reconfiguring robots,"Robotics and Automation, 2007 IEEE International Conference on Robotics and Automation, Roma, Italy, 10-14 April 2007.
 
+\bibitem{dresner}
+Kurt Dresner and Peter Stone. ''Multiagent Traffic Management: An Improved Intersection
+Control Mechanism", AAMAS'05 Proceedings of the fourth international joint conference on Autonomous agents and multiagent systems, New York, NY, USA, 2005.
+\bibitem{naumann}
+Naumann, Rolf, and Rainer Rasche. ``Intersection collision avoidance by means of decentralized security and communication management of autonomous vehicles", Univ.-GH, SFB 376, 1997.
+\bibitem{tszchiu}
+Au, Tsz-Chiu, Neda Shahidi, and Peter Stone. ``Enforcing Liveness in Autonomous Traffic Management." AAAI. 2011.
 \end{thebibliography}
 \end{document}
