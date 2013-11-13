@@ -20,9 +20,18 @@ We propose to do a reading project on intersection collision avoidance by decent
 
 Traffic congestion is one of the leading causes of lost productivity and decreased standard of living in urban settings. Recent advances in artificial intelligence suggest vehicle navigation by autonomous agents will be possible in the near future.\cite{dresner}  We plan to investigate approaches for alleviating traffic congestion, specifically at intersections.  There have been advances in developing centralized controls to pilot cars at intersections; however, in light of the course we plan to focus our literary review on decentralized intersection management methods.
 
-In particular, we are interested in a line of research by \cite{naumann} which creates a token-ring-based communication protocol among autonomous vehicles in a specified zone around the intersection.  Collision avoidance is ensured by means of semaphor-based algorithms, which allow only one vehicle to remain in the intersection segment at a time.  In our literary review, we would like to show the connection between decentralized intersection management methods and the mutual exclusion algorithms we reviewed in class.  Furthermore, we would like to investigate allowing priority in the mutual exclusion algorithms.  For example, if an ambulance approaches the intersection, it should get top priority to use the intersection.  Another area we are interested in investigation is the discussion of modeling the problem, which may take into account the individual car's current position, velocity, and acceleration while approaching the intersection.  One aim of our project is to translate this problem into the current distributed algorithms literature, for example, we would like to discuss the liveness properties\cite{tszchiu} or progress conditions...blbalbalbal
-
-
+In particular, we are interested in a line of research by \cite{naumann} which creates a
+token-ring-based communication protocol among autonomous vehicles in a specified zone around the
+intersection.  Collision avoidance is ensured by means of semaphor-based algorithms, which allow
+only one vehicle to remain in the intersection segment at a time.  In our literary review, we would
+like to show the connection between decentralized intersection management methods and the mutual
+exclusion algorithms we reviewed in class.  One aim of our project is to translate this problem into
+the current distributed algorithms literature, for example, we would like to discuss the liveness
+properties and show the fairness properties of the algorithms as in \cite{tszchiu} for
+centralized intersection management. Due to the nature of
+this problem, we will need to include a discussion of modeling the problem, which may take into
+account the individual car's current position, velocity, and acceleration while approaching the
+intersection. 
 \begin{thebibliography}{9}
 
 \bibitem{dresner}
