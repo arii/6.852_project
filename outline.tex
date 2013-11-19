@@ -15,14 +15,53 @@
 \begin{center}{\bf \Large
 6.852 Distributed Algorithms Project Outline\\ }
 Ariel Anders and Noel Hollingsworth 
+\\
+{\bf \em Decentralized Approaches for Autonomous Intersection Control }
 \end{center}
-
 \begin{itemize}
 \item Introduction
-\item Decentralized Approach (R.Naumann) -- try to rephrase in distributed algorithms lingo
-\item Virtual Node Layer Approach (Nancy's paper)
-\item Extra Credit- try to use VNLayer to use a centralized algorithm (such as one from P.Stone)
+	\begin{itemize}
+		\item Motivation  
+		\item Problem Definition\\
+		Mutual exclusion problem- only one car allowed in the critical region (intersection)\\
+		What assumptions are we making about the cars? (message passing capabilities)\\
+		How are we defining a successful algorithm?  throughput, wait-free\\
+	\end{itemize}
+\item Decentralized Approaches  \\ 
+Translate these algorithms into distributed algorithms lingo
+\begin{itemize}
+	\item Ring based semaphore control \cite{naumann}
+	\item Decentralized Navigation Functions \cite{roozbehani}\\
+	This paper has been built upon.  \cite{makarem} modifies it in such a way that heavier vehicles that need more energy and time for acceleration or breaking are given an indirect priority at intersections etc.
+	\item Virtual Node Layer Approach \cite{vnlayer}
+\end{itemize}
+\item Future Work Discussion
+	\begin{itemize}
+		\item Try to use VNLayer to use a centralized algorithm (such as  \cite{dresner})
+		\item Discussion on different areas to optimize for these algorithms.  This could include different levels of priority for cars and different measures for throughput.
+	\end{itemize}
 \item Conclusion
 \end{itemize}
+
+\begin{thebibliography}{9}
+
+\bibitem{vnlayer}
+Brown, Matthew, et al. "The virtual node layer: a programming abstraction for wireless sensor networks." SIGBED Review 4.3 (2007): 7-12.
+
+\bibitem{naumann}
+Naumann, Rolf, and Rainer Rasche. ``Intersection collision avoidance by means of decentralized security and communication management of autonomous vehicles", Univ.-GH, SFB 376, 1997.
+
+\bibitem{roozbehani}
+Roozbehani, Hajir, Sylvain Rudaz, and Denis Gillet. "On decentralized navigation schemes for coordination of multi-agent dynamical systems." Systems, Man and Cybernetics, 2009. SMC 2009. IEEE International Conference on. IEEE, 2009.
+
+\bibitem{makarem}
+Makarem, Laleh, and Denis Gillet. "Decentralized Coordination of Autonomous Vehicles at intersections." World Congress. Vol. 18. No. 1. 2011.
+
+\bibitem{dresner}
+Kurt Dresner and Peter Stone. ''Multiagent Traffic Management: An Improved Intersection
+Control Mechanism", AAMAS'05 Proceedings of the fourth international joint conference on Autonomous agents and multiagent systems, New York, NY, USA, 2005.
+\end{thebibliography}
+
+
 
 \end{document}
