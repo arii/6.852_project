@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\linespread{1}
+%\pagestyle{empty}
+\setlength\parindent{12pt}
+
+
+\usepackage[top=1in,bottom=1in,left=1in,right=1in]{geometry}
+\title{Decentralized Approaches for Autonomous Intersection Control }
+\author{Ariel Anders and Noel Hollingsworth\\ 6.852 Final Project Type: Reading Project}
+
+\begin{document}
+\maketitle 
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Introduction}
+
+Traffic congestion is one of the leading causes of lost productivity and decreased standard of living in urban settings. Recent advances in artificial intelligence suggest vehicle navigation by autonomous agents will be possible in the near future.\cite{dresner}  
+% add more motivation
+This report investigates approaches for alleviating traffic congestion for autonomous vehicles, specifically at intersections. At the heart of the problem, intersection management, is a mutual exclusion problem: collisions are avoided by not allowing multiple cars to be in the critical resource (intersection) at the same time.  What makes this problem interesting is the dynamic structure of the network between the cars entering and leaving the intersection.  In addition to this safey property, we have the following liveness property that no car should wait indefinitely to enter the intersection.  Furthermore, in addition to satisfying liveness and safety properties, intersections have a complex evaluation criteria that can include improving the overall throughput of cars entering the intersection and allowing ambulances having priority to enter the intersection faster than other vehicles.
+
+There have been advances in developing centralized controls to pilot cars at intersections; however, in light of the course we plan to focus our literary review on decentralized intersection management methods.  Decentralized intersection management systems are adaptable and don't require an underlying infrastructure to be set up for every intersection.  % possibly add more motivation for decentralized methods
+Because of this, the report will focus on three separate decentralized intersection management methods. 
+Section \ref{sec:tokenRing}  discusses a token-ring-based communication protocol, in which  collision avoidance is ensured by means of semaphor-based algorithms, which allow only one vehicle to remain in the intersection segment at a time.  Section \ref{sec:DNF} outlines a decentralized algorithm that translates the problem into a motion planning problem using research from motion control of cooperative robotics literature.  Our final spotlight on a decentralized approach in section \ref{sec:VNLayer} discuses using a virtual node layer to emulate a  spotlight at a specific location.  
+The rest of the  paper is organized  goes as follows: in section \ref{sec:problemDefinition} we will define the problem definition for decentralized intersection management and outline the assumptions we are making about the autonomous vehicles sensors and communication.  In section ref{sec:decentralizedApproaches} we will give an overview of the three different protocols our paper is focusing on.  In section \ref{sec:futureWork} we will give some insight for areas of future work.  And finally, in section \ref{sec:conclusion} we will conclude the paper.
+
+\subsection{Problem Definition}
+\label{sec:problemDefinition}
+\subsubsection{Communication Properties}
+For the following decentralized approaches described in this report, we make the following assumptions about the vehicles' communication and sensor properties:
+\begin{enumerate}
+\item Within a specified range around the intersection, vehicles within this region can form a dynamic network and can broadcast messages to all nodes in the network.
+\item
+Once a vehicle enters the specified region about the intersection, vehicles can detect if other vehicles are within the network.  
+\end{enumerate}
+
+\subsubsection{Evaluation Criteria}
+
+\begin{description}
+\item[Safety] Vehicles cannot collide.   For the first approach, two vehicles going opposite direction are allowed to enter the intersection at the same time.
+\item[Liveness]
+\item[Problem Specific]
+\end{description}
+
+\section{Decentralized Approaches}
+\label{sec:decentralizedApproaches}
+\subsection{Token-ring Communication}
+\label{sec:tokenRing}
+\subsection{Decentralized Navigation Functions}
+\label{sec:DNF}
+\subsection{Virtual Node Layer}
+\label{sec:VNLayer}
+
+\section{Future Work}
+\label{sec:futureWork}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{dresner}
+Kurt Dresner and Peter Stone. ''Multiagent Traffic Management: An Improved Intersection
+Control Mechanism", AAMAS'05 Proceedings of the fourth international joint conference on Autonomous agents and multiagent systems, New York, NY, USA, 2005.
+\bibitem{naumann}
+Naumann, Rolf, and Rainer Rasche. ``Intersection collision avoidance by means of decentralized security and communication management of autonomous vehicles", Univ.-GH, SFB 376, 1997.
+\bibitem{tszchiu}
+Au, Tsz-Chiu, Neda Shahidi, and Peter Stone. ``Enforcing Liveness in Autonomous Traffic Management." AAAI. 2011.
+\end{thebibliography}
+\end{document}
