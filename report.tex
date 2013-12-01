@@ -63,7 +63,7 @@ There has been a great deal of research on VNLayers  (cite), this research has a
 
 \subsubsection{VNLayer Architecture}
 \begin{figure}
-\includegraphics[width=\textwidth]{vnlayerarchitecture.pdf} 
+\includegraphics[width=.65\textwidth]{vnlayerarchitecture.pdf} 
 \caption{VNLayer Architecture \cite{vnlayer}}
 \label{fig:vnlayerArch}
 \end{figure}
@@ -89,14 +89,36 @@ Due to message loss, multiple nodes might elect themselves as leader. This is ha
 \subsubsection{Virtual Traffic Light}
 As outlined in \cite{vnlayer}, the virtual traffic light is a possible application of the Reactive VNlayer.  We assume that each client has access to information about the time and its current location and can communicate with other clients using a local broadcast service. Then, the VN for the intersection is emulated by the CNs that are being run by the physical, autonomous cars approaching and leaving the intersection. 
 
-Then, the VN is programed to inform the CNs approaching the intersection the color of the traffic light in its direction.  To insure progress, the VN keeps track of the amount of time the intersection has shown a certain color.  Although the Reactive VN does not have a clock, the CNs do  (from assumption), and each time a CN sends a message it timestamps it with its clock time.  This is then used by the VN for the best estimated of the current time.   
+The VN is programed to inform the CNs approaching the intersection the color of the traffic light in its direction.  To insure progress, the VN keeps track of the amount of time the intersection has shown a certain color.  Although the Reactive VN does not have a clock, the CNs do  (from assumption), and each time a CN sends a message it timestamps it with its clock time.  This is then used by the VN for the best estimated of the current time.   
 
-The algorithm goes as follows:  Clients broadcast their current time, position, and heading in UPDATE messages
+The algorithm goes as follows:  Clients broadcast their current time, position, and heading in UPDATE messages.  The VNLayer reacts to the message in a $msgReceived$ function as shown in figure \ref{fig:vnlayerAlg}.  The VN for this application is programmed to update its state upon receiving this message and possibly change the color of some of the roads' lights based on the $UpdateLightState$ function. 
 
+\begin{figure}
+\includegraphics[width=.65\textwidth]{vnlayerAlg.pdf}
+\caption{Code for the $msgReceived$ function \cite{vnlayer}}
+\label{fig:vnlayerAlg}
+\end{figure}
+The $UpdateLightFunction$ works as follows: whenever the VN determines that a predetermined minimum "green time" has passed for the green light for a direction , or if it sees that there are no more vehicles heading in that direction, then it changes the direction's lights to yellow.  Then, once the VN sees a predetermined "yellow time" has passed it changes the direction for that light to red and the opposite direction to green.  
 
- In this implementation, the following safety property is satisfied: only clients in a single direction see a non-red light and the liveness property: a waiting client eventually sees a green light.
+\subsection{Liveness and Safety Properties}
+\begin{description}
+\item[Safety]
+ In this implementation, the following safety property is satisfied: only clients in a single direction see a non-red light.
+\item[Liveness] 
+ Essentially, $UpdateLightState$ works in a round robin fashion, granting green lights to populated direction in order.  This ordering insures the algorithm is fair and cars do not have to wait indefinitely to receive a green light. 
+\end{description}
+
+\subsection{Self-Stabilization}
+The VNLayer has the self-stabilization property:  the ability to recover from an arbitrarily corrupt state\cite{ssvnlayer}.  Note that in the Leadership manager, the system works by pulsing messages and can elect more than one leader, which eventually gets fixed because the leader with the higher ID will relinquish its status after receiving a message from a leader with a lower ID. 
+\subsection{Conclusion}
+One concern with this approach is that the behavior of the stop light can be inconsistent until the VNLayer  self-stabilizes. This stoplight might work ideally in a intersection where there are always cars within the network so the VN application is consistently being emulated in a stable configuration. 
+Maybe something else? %XXX Could this fail the safety property or just make vehicles wait until stabilization is achieved?
+Unlike the algorithms in Section \ref{sec:tokenRing} and \ref{sec:DNF}, the traffic light application for VNLayers does not handle the extra evaluation criteria outlined in \ref{sec:problemDefinition}.  However, the abstraction to VNs and CNs makes the ability to program the application much simpler.  It is possible that messages from CNs could include more information for the $updateLightStatus$ to use.  For example, the message could include a boolean value $isAmbulance$ which the $updateLightStatus$ will use to change the light to the ambulance's direction faster than the predetermined wait time. 
+
 \section{Future Work}
 \label{sec:futureWork}
+A great deal of research has focused on creating centralized autonomous intersection algorithms; this is probably due to the ease of programming of the application.  Creating a fault tolerant decentralized algorithm is nontrivial;  however, the Reactive VNLayers greatly simplifies this process.  The  centralized virtual traffic light implemented using Reactive VNLayers described in Section \ref{sec:VNLayer} could potentially be extended to implement more advanced centralized autonomous intersection algorithms.  For example, the traffic light application currently does not take into account priority of other vehicles or improving throughput,  fuel consumption, or the amount of time the cars are stopped as described in other algorithms.  However, since VNLayer allows us to emulate a centralized traffic controller, it's possible we could adapt centralized algorithms such as %XXX
+to create an approach that is decentralized, but has the desired evaluation properties outlined in Section \ref{sec:problemDefinition}, in addition to the properties of the centralized algorithms it simulates.   %bla this is bad I talked about this in conclusion earlier...
 
 
 \section{Conclusion}
