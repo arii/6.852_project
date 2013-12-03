@@ -93,7 +93,6 @@ Naumman and Rasche present a distributed approach to the intersection management
 The paper also considers priority and throughput. Sensors on the cars can be used to improve throughput by organizing cars into platoons, and a score for each car can be used to grant priority to emergency vehicles, or to cars that have been waiting a long time.\par
 If all the details of the proposed system were formalized it seems that the system could be practical for a real system. Stopping failures in cars should be extremely rare, and handled as a special case by the driving software. Transient message failures are much more realistic, but through the use of sensors and timeouts the problems in the algorithm that arise from them can be avoided. The largest potential for problems or slowdowns with the algorithm is the election of a new leader, which would be avoided in busy intersections, where the old leader will be able to transfer control to a new leader. \par
 
-
 \subsection{Intersection Management using Motion Control}
 \label{sec:DNF}
 An alternative approach to modeling the intersection problem as a mutual exclusion problem is to have vehicles move in an arbitrary manner through the intersection using methods from motion planing. The advantage of this approach is that with a wider range of movement allowed, it may be possible to reach greater speeds. The disadvantage is that the approach is more complex, making it harder to prove that safety and liveness can be satisfied.\par
