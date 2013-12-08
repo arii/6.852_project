@@ -129,9 +129,11 @@ This research has allowed for different communication assumptions and failure mo
 
 \subsection{VNLayer Architecture}
 \begin{figure}
+\begin{center}
 \includegraphics[width=.65\textwidth]{vnlayerarchitecture.pdf} 
 \caption{VNLayer Architecture \cite{vnlayer}}
 \label{fig:vnlayerArch}
+\end{center}
 \end{figure}
 The VNLayer abstraction is implemented by the client nodes, meaning the emulation software must maintain a consistent snapshot of the Virtual Node state.  % I don't really know what this means ... does this help?
  In order to do this in a fault tolerant manner, the VN application uses  {\bf leader, consistency, and membership managers} as outlined in figure \ref{fig:vnlayerArch}.  The following is a description of the responsibilities of the three managers and the VN application:
@@ -163,9 +165,11 @@ The VN is programmed to inform the CNs approaching the intersection the color of
 The algorithm works as follows:  Clients broadcast their current time, position, and heading in UPDATE messages.  The VNLayer reacts to the message in a $msgReceived$ function as shown in figure \ref{fig:vnlayerAlg}.  The VN for this application is programmed to update its state upon receiving this message and possibly change the color of some of the roads' lights based on the $UpdateLightState$ function. 
 
 \begin{figure}
+\begin{center}
 \includegraphics[width=.65\textwidth]{vnlayerAlg.pdf}
 \caption{Code for the $msgReceived$ function \cite{vnlayer}}
 \label{fig:vnlayerAlg}
+\end{center}
 \end{figure}
 The $UpdateLightFunction$ proceeds as follows: whenever the VN determines that a predetermined minimum ``green time" has passed for the green light for a direction, or if it sees that there are no more vehicles heading in that direction, then it changes the direction's lights to yellow.  Then, once the VN sees a predetermined ``yellow time" has passed it changes the direction for that light to red and the opposite direction to green.  The function works in a round robin fashion, granting green lights in a routine order to all directions (if there are cars waiting in that direction). 
 
@@ -213,7 +217,7 @@ Au, Tsz-Chiu, Neda Shahidi, and Peter Stone. ``Enforcing Liveness in Autonomous 
 \bibitem{roozbehani}
 Roozbehani, Hajir, Sylvain Rudaz, and Denis Gillet. "On decentralized navigation schemes for coordination of multi-agent dynamical systems." Systems, Man and Cybernetics, 2009. SMC 2009. IEEE International Conference on. IEEE, 2009.
 \bibitem{vnlayer}
-Brown, Matthew, et al. "The virtual node layer: a programming abstraction for wireless sensor networks." SIGBED Review 4.3 (2007): 7-12.
+Brown, M., Gilbert, S., Lynch, N. A., Newport, C. C., Nolte, T., and Spindel, M. "The virtual node layer: a programming abstraction for wireless sensor networks." SIGBED Review 4.3 (2007): 7-12.
 \bibitem{ssvnlayer}
 Nolte, Tina, and Nancy Lynch. ``Self-stabilization and virtual node layer emulations." Stabilization, Safety, and Security of Distributed Systems. Springer Berlin Heidelberg, 2007. 394-408.
 \bibitem{vn1}
