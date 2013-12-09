@@ -3,7 +3,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{graphicx}
-\linespread{1}
+\linespread{1.6}
 %\pagestyle{empty}
 \setlength\parindent{12pt}
 
@@ -121,7 +121,7 @@ Because of these flaws the algorithm seems less usable than the algorithm propos
 
 \section{Emulating a Centralized Approach: Virtual Node Layer}
 \label{sec:VNLayer}
-The final approach by Matthew Brown, et al. \cite{vnlayer} is quite separate from the previous approaches outlined in \ref{sec:decentralizedApproaches} as it uses a {\em Virtual Node Layer (VNLayer)} programming abstraction to emulate a virtual traffic light.  The VNLayer uses ideas discussed in the class, such as replicated state machines and leader election to create this abstraction. In the virtual traffic light example given in the paper, the the overall approach is decentralized in creating the virtual node; however, the emulated virtual node, then uses a centralized controller to implement intersection management.  
+The final approach by Matthew Brown, et al. \cite{vnlayer} is quite separate from the previous approaches outlined in Section \ref{sec:decentralizedApproaches} as it uses a {\em Virtual Node Layer (VNLayer)} programming abstraction to emulate a virtual traffic light.  The VNLayer uses ideas discussed in the class, such as replicated state machines and leader election to create this abstraction. In the virtual traffic light example given in the paper, the the overall approach is decentralized in creating the virtual node; however, the emulated virtual node, then uses a centralized controller to implement intersection management.  
 \\
 The VNLayer is a programming abstraction that emulates predictable {\em Virtual Nodes (VNs)} from the unpredictable {\em Client Nodes (CNs)}. In our application, the VNs are the traffic lights, and the CNs are controlled by the autonomous vehicles.  The VNs identify with an arbitrary region of the network and remain in a fixed, known location  or move in a controlled manner through the network.  VNs are emulated by the CNs located within a region around the VN.  This emulation is done using replicated state machines, elected leaders, and quorums.  
 There has been a great deal of research on VNLayers\cite{vn1}\cite{vn2}\cite{vn3}\cite{vn4}.   
